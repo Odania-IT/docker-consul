@@ -1,4 +1,4 @@
-FROM odaniait/docker-base:latest
+FROM odaniait/docker-base:v2
 MAINTAINER Mike Petersen <mike@odania-it.de>
 
 RUN mkdir -p /var/lib/consul
@@ -13,8 +13,8 @@ RUN curl -OL https://dl.bintray.com/mitchellh/consul/0.5.2_web_ui.zip
 RUN unzip 0.5.2_web_ui.zip
 RUN mv dist /usr/share/consul/ui
 
-ADD startup.sh /root/startup.sh
-
-CMD /root/startup.sh
+# setup consul service
+RUN mkdir -p /etc/service/consul
+COPY runit/consul.sh /etc/service/consul/run
 
 EXPOSE 8400 8500 8600/udp
