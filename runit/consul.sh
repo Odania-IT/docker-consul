@@ -13,4 +13,3 @@ else
 		exec /usr/local/bin/consul agent -server -data-dir=/tmp/consul -client=0.0.0.0 -advertise=$ADVERTISE_IP
 	fi
 fi
-gs
