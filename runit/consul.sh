@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ -z "${ADVERTISE_IP}" ]; then
-	ADVERTISE_IP=$(/sbin/ifconfig | sed -n '2 p' | awk '{print $3}')
+	ADVERTISE_IP=$(hostname -i)
 fi
 
 if [ "${BOOTSTRAP_NODE,,}" == "true" ]; then
