@@ -22,4 +22,8 @@ RUN unzip consul_${CONSUL_VERSION}_web_ui.zip
 RUN mkdir -p /etc/service/consul
 COPY runit/consul.sh /etc/service/consul/run
 
+# setup consul join service
+RUN mkdir -p /etc/service/join
+COPY runit/join.sh /etc/service/join/run
+
 EXPOSE 8400 8500 8600/udp
