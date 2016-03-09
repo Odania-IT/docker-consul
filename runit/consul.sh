@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 if [ -z "${ADVERTISE_IP}" ]; then
-	ADVERTISE_IP=$(hostname -i)
+	# Try to get the rancher ip
+	ADVERTISE_IP=$(ip -o -4 addr list eth0 | awk '$4~"^10"{split($4,A,"/");print A[1]}')
+	if [ -z "${ADVERTISE_IP}" ]; then
+		ADVERTISE_IP=$(hostname -i)
+	fi
 fi
 
 if [ -z "${DATA_DIR}" ]; then
