@@ -1,7 +1,7 @@
 FROM odaniait/docker-base:latest
 MAINTAINER Mike Petersen <mike@odania-it.de>
 
-ENV CONSUL_VERSION 0.6.4
+ENV CONSUL_VERSION 0.7.0
 
 WORKDIR /tmp
 
